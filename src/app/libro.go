@@ -7,18 +7,18 @@ type Libro struct {
 	Disponile bool
 }
 
-func (libro Libro) getNombre() string {
+func (libro Libro) GetNombre() string {
 	return libro.Nombre
 }
 
-func (libro Libro) getAutor() string {
+func (libro Libro) GetAutor() string {
 	return libro.Autor
 }
 
-func (libro Libro) getId() string {
+func (libro Libro) GetId() string {
 	return libro.Id
 }
 
-func (libro Libro) getDisponile() bool {
+func (libro Libro) GetDisponile() bool {
 	return libro.Disponile
 }

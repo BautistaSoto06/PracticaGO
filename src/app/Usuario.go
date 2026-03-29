@@ -26,3 +26,7 @@ func (u Usuario) GetLibro() int {
 func (u *Usuario) PedirLibro(l Libro) {
 	u.Libro = append(u.Libro, l)
 }
+
+func (u *Usuario) PedirLibros(l []Libro) {
+	u.Libro = append(u.Libro, l...)
+}
