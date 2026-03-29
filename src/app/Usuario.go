@@ -19,6 +19,10 @@ func (u Usuario) GetLegajo() string {
 	return u.Legajo
 }
 
-func (u Usuario) GetLibro() []Libro {
-	return u.Libro
+func (u Usuario) GetLibro() int {
+	return len(u.Libro)
+}
+
+func (u *Usuario) PedirLibro(l Libro) {
+	u.Libro = append(u.Libro, l)
 }

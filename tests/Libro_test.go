@@ -25,6 +25,7 @@ func TestCrearLibro(t *testing.T) {
 	if libro.GetId() != "43401" {
 		t.Error("Id no coincide con el libro")
 	}
+
 	if libro.GetDisponile() != true {
 		t.Error("Disponile no coincide con el libro")
 	}
