@@ -1,14 +1,14 @@
 package app
 
 type Libro struct {
-	Nombre    string
+	Titulo    string
 	Autor     string
 	Id        string
 	Disponile bool
 }
 
-func (libro Libro) GetNombre() string {
-	return libro.Nombre
+func (libro Libro) GetTitulo() string {
+	return libro.Titulo
 }
 
 func (libro Libro) GetAutor() string {

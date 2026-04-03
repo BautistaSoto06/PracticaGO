@@ -23,10 +23,15 @@ func (u Usuario) GetLibro() int {
 	return len(u.Libro)
 }
 
-func (u *Usuario) PedirLibro(l Libro) {
-	u.Libro = append(u.Libro, l)
-}
+func (u *Usuario) PedirLibro(b *Biblioteca, titulo string) bool {
+	for i, libro := range b.Libro {
+		if libro.GetTitulo() == titulo {
+			libro.Disponile = false
+			u.Libro = append(u.Libro, libro)
+			b.Libro = append(b.Libro[:i], b.Libro[i+1:]...)
+			return true
+		}
+	}
 
-func (u *Usuario) PedirLibros(l []Libro) {
-	u.Libro = append(u.Libro, l...)
+	return false
 }

@@ -8,26 +8,25 @@ import (
 func TestCrearLibro(t *testing.T) {
 
 	libro := app.Libro{
-		Nombre:    "TodoPasa",
+		Titulo:    "TodoPasa",
 		Autor:     "Carlos Alberto",
 		Id:        "43401",
 		Disponile: true,
 	}
 
-	if libro.GetNombre() != "TodoPasa" {
-		t.Error("Nombre no coincide con el libro")
+	if libro.GetTitulo() != "TodoPasa" {
+		t.Error("Titulo no coinciden")
 	}
 
 	if libro.GetAutor() != "Carlos Alberto" {
-		t.Error("Autor no coincide con el libro")
+		t.Error("Autor no coinciden")
 	}
 
 	if libro.GetId() != "43401" {
-		t.Error("Id no coincide con el libro")
+		t.Error("Id no coincide")
 	}
-
 	if libro.GetDisponile() != true {
-		t.Error("Disponile no coincide con el libro")
+		t.Error("Disponile no coincide")
 	}
 
 }

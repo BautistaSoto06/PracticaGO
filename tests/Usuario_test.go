@@ -8,7 +8,7 @@ import (
 func TestUsuario(t *testing.T) {
 
 	l := app.Libro{
-		Nombre:    "TodoPasa",
+		Titulo:    "TodoPasa",
 		Autor:     "Carlos Alberto",
 		Id:        "43401",
 		Disponile: true,
@@ -20,7 +20,19 @@ func TestUsuario(t *testing.T) {
 		Legajo:   "46460589",
 	}
 
-	u.PedirLibro(l)
+	b := app.Biblioteca{}
+	b.AgregarLibro(l)
+
+	//esperado := "NuncaPasa"
+	//obtenido := l.GetTitulo()
+
+	//pedir := u.PedirLibro(&b, esperado)
+
+	//if pedir != obtenido
+
+	if !u.PedirLibro(&b, "TodoPasa") {
+		t.Fatal("El usuario no pudo pedir un libro disponible")
+	}
 
 	if u.GetNombre() != "Pedro" {
 		t.Error("Nombre No concide")
@@ -40,4 +52,12 @@ func TestUsuario(t *testing.T) {
 		t.Error("No coincide con la cantidad que tenemos")
 	}
 
+	if b.LibrosDisponile() != 0 {
+		t.Error("La biblioteca deberia quedarse sin libros disponibles")
+	}
+
 }
+
+//func LibroInexistente(t *testing.T) {
+
+//}

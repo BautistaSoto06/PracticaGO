@@ -11,6 +11,7 @@ func (b Biblioteca) LibrosDisponile() int {
 
 func (b *Biblioteca) AgregarLibro(l Libro) {
 	b.Libro = append(b.Libro, l)
+
 }
 
 func (b Biblioteca) LibrosPrestados() int {
