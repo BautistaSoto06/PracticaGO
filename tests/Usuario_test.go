@@ -23,12 +23,13 @@ func TestUsuario(t *testing.T) {
 	b := app.Biblioteca{}
 	b.AgregarLibro(l)
 
-	//esperado := "NuncaPasa"
-	//obtenido := l.GetTitulo()
+	esperado := "NuncaPasa"
+	obtenido := l.GetTitulo()
 
-	//pedir := u.PedirLibro(&b, esperado)
-
-	//if pedir != obtenido
+	u.PedirLibro(&b, esperado)
+	if obtenido != esperado {
+		t.Error("El usuario no pudo pedir un libro disponible")
+	}
 
 	if !u.PedirLibro(&b, "TodoPasa") {
 		t.Fatal("El usuario no pudo pedir un libro disponible")
