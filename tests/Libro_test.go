@@ -3,30 +3,26 @@ package tests
 import (
 	app "ProyectoTp1/src/app"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
-func TestCrearLibro(t *testing.T) {
+func TestLibro_GetTitulo(t *testing.T) {
+	libro := app.Libro{Titulo: "TodoPasa"}
+	assert.Equal(t, "TodoPasa", libro.GetTitulo(), "Titulo no coincide")
+}
 
-	libro := app.Libro{
-		Titulo:    "TodoPasa",
-		Autor:     "Carlos Alberto",
-		Id:        "43401",
-		Disponile: true,
-	}
+func TestLibro_GetAutor(t *testing.T) {
+	libro := app.Libro{Autor: "Carlos Alberto"}
+	assert.Equal(t, "Carlos Alberto", libro.GetAutor(), "Autor no coincide")
+}
 
-	if libro.GetTitulo() != "TodoPasa" {
-		t.Error("Titulo no coinciden")
-	}
+func TestLibro_GetId(t *testing.T) {
+	libro := app.Libro{Id: "43401"}
+	assert.Equal(t, "43401", libro.GetId(), "Id no coincide")
+}
 
-	if libro.GetAutor() != "Carlos Alberto" {
-		t.Error("Autor no coinciden")
-	}
-
-	if libro.GetId() != "43401" {
-		t.Error("Id no coincide")
-	}
-	if libro.GetDisponile() != true {
-		t.Error("Disponile no coincide")
-	}
-
+func TestLibro_GetDisponile(t *testing.T) {
+	libro := app.Libro{Disponile: true}
+	assert.Equal(t, true, libro.GetDisponile(), "Disponile no coincide")
 }
