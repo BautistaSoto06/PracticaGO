@@ -20,6 +20,20 @@ jobs:
           go-version-file: go.mod
           cache: true
 
-      - run: go mod tidy
-      - run: go build ./...
-      - run: go test -v ./...
+      - name: Instalar dependencias
+        run: go mod tidy
+
+      - name: Compilar
+        run: go build ./...
+
+      - name: Ejecutar tests con cobertura
+        run: go test -v ./... -coverprofile=coverage.out -covermode=atomic
+
+      - name: Mostrar resumen de cobertura
+        run: go tool cover -func=coverage.out
+
+      - name: Guardar reporte de cobertura
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage.out
