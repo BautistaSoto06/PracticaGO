@@ -27,7 +27,7 @@ jobs:
         run: go build ./...
 
       - name: Ejecutar tests con cobertura
-        run: go test -v ./... -coverprofile=coverage.out -covermode=atomic
+        run: go test ./... -coverpkg=./... -coverprofile=coverage.out
 
       - name: Mostrar resumen de cobertura
         run: go tool cover -func=coverage.out
