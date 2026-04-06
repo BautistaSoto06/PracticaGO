@@ -1,8 +1,8 @@
 package app
 
 type Catalogo struct {
-	libros 
-	private string editorial
+	libros    []Libro
+	editorial string
 }
 
 func (c Catalogo) GetEditorial() string {
@@ -13,9 +13,6 @@ func (c Catalogo) GetLibros() []Libro {
 	return c.libros
 }
 
-func (c Catalogo) Agreg|arLibro(libro Libro) Catalogo {
+func (c *Catalogo) AgregarLibro(libro Libro) {
 	c.libros = append(c.libros, libro)
-	return c
 }
-
-

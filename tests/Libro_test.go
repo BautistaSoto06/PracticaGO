@@ -42,35 +42,44 @@ func TestCatalogo_GetCategoria(t *testing.T) {
 	assert.Equal(t, "Infantil", c.GetCategoria(), "La categoria no coincide")
 }
 
-func TestCatalogo_GetEstante(t *testing.T) {
-	c := app.Catalogo{
-		Libro: app.Libro{
-			Titulo:    "1984",
-			Autor:     "George Orwell",
-			Id:        "2",
-			Disponile: true,
-		},
-		Categoria: "Novela",
-		Estante:   "B3",
+func TestCatalogo_GetEditorial(t *testing.T) {
+	c := app.Catalogo{}
+
+	libro := app.Libro{
+		Titulo:    "1984",
+		Autor:     "George Orwell",
+		Id:        "2",
+		Disponile: true,
 	}
 
-	assert.Equal(t, "B3", c.GetEstante(), "El estante no coincide")
+	c.AgregarLibro(libro)
+
+	assert.Equal(t, 1, len(c.GetLibros()), "El catalogo deberia tener 1 libro")
+	assert.Equal(t, "1984", c.GetLibros()[0].GetTitulo(), "El titulo no coincide")
+	assert.Equal(t, "George Orwell", c.GetLibros()[0].GetAutor(), "El autor no coincide")
 }
 
-func TestCatalogo_HeredaDatosDeLibro(t *testing.T) {
-	c := app.Catalogo{
-		Libro: app.Libro{
-			Titulo:    "Clean Code",
-			Autor:     "Robert C. Martin",
-			Id:        "3",
-			Disponile: true,
-		},
-		Categoria: "Programacion",
-		Estante:   "C2",
+func TestCatalogo_AgregarLibro(t *testing.T) {
+	c := app.Catalogo{}
+
+	libro1 := app.Libro{
+		Titulo:    "Clean Code",
+		Autor:     "Robert C. Martin",
+		Id:        "3",
+		Disponile: true,
 	}
 
-	assert.Equal(t, "Clean Code", c.GetTitulo(), "El titulo no coincide")
-	assert.Equal(t, "Robert C. Martin", c.GetAutor(), "El autor no coincide")
-	assert.Equal(t, "3", c.GetId(), "El id no coincide")
-	assert.Equal(t, true, c.GetDisponile(), "La disponibilidad no coincide")
+	libro2 := app.Libro{
+		Titulo:    "The Pragmatic Programmer",
+		Autor:     "Andrew Hunt",
+		Id:        "4",
+		Disponile: true,
+	}
+
+	c.AgregarLibro(libro1)
+	c.AgregarLibro(libro2)
+
+	assert.Equal(t, 2, len(c.GetLibros()), "El catalogo deberia tener 2 libros")
+	assert.Equal(t, "Clean Code", c.GetLibros()[0].GetTitulo(), "El primer libro no coincide")
+	assert.Equal(t, "The Pragmatic Programmer", c.GetLibros()[1].GetTitulo(), "El segundo libro no coincide")
 }
