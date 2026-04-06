@@ -1,3 +1,5 @@
+package app
+
 type Catalogo struct {
 	libros 
 	private string editorial
